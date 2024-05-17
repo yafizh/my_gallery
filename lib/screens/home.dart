@@ -24,13 +24,17 @@ class Home extends StatelessWidget {
                       Row(
                         children: [
                           ElevatedButton.icon(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/gallery/create');
+                            },
                             label: const Text('Add New Image'),
                             icon: const Icon(Icons.add),
                           ),
                           const SizedBox(width: 8),
                           ElevatedButton.icon(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/galleries');
+                            },
                             label: const Text('Image Colelctions'),
                             icon: const Icon(Icons.image),
                           ),

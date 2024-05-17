@@ -10,6 +10,11 @@ class GalleryCreate extends StatefulWidget {
 class _GalleryCreateState extends State<GalleryCreate> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Add new image'),
+      ),
+      body: const Text('Add new gallery page'),
+    );
   }
 }
