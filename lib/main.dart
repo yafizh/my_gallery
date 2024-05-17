@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_gallery/screens/gallery/gallery_create.dart';
+import 'package:my_gallery/screens/gallery/gallery_index.dart';
 import 'package:my_gallery/screens/home.dart';
 
 void main() {
@@ -16,7 +18,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Home(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Home(),
+        '/gallery': (context) => const GalleryIndex(),
+        '/gallery/create': (context) => const GalleryCreate()
+      },
     );
   }
 }
