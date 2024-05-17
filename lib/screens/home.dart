@@ -7,11 +7,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            appBar: AppBar(
-              title: Text('My Gallery App'),
-              centerTitle: true,
-              backgroundColor: Colors.lightGreen,
-            ),
+            appBar: AppBar(),
             body: Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Row(
@@ -24,7 +20,7 @@ class Home extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 24, fontWeight: FontWeight.bold),
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 24),
                       Row(
                         children: [
                           ElevatedButton.icon(
