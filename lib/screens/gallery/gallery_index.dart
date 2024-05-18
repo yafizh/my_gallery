@@ -21,10 +21,12 @@ class _GalleryIndexState extends State<GalleryIndex> {
     final path = await _localPath;
 
     setState(() {
-      galleries = Directory('$path/my_gallery')
-          .listSync()
-          .map((file) => File(file.path))
-          .toList();
+      if (Directory('$path/my_gallery').existsSync()) {
+        galleries = Directory('$path/my_gallery')
+            .listSync()
+            .map((file) => File(file.path))
+            .toList();
+      }
       loading = false;
     });
   }
@@ -53,12 +55,31 @@ class _GalleryIndexState extends State<GalleryIndex> {
                               crossAxisSpacing: 8),
                       itemCount: galleries.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          decoration:
-                              BoxDecoration(border: Border.all(width: 1)),
-                          child: Image.file(
-                            galleries[index],
-                            fit: BoxFit.cover,
+                        return Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Image.file(
+                                width: double.infinity,
+                                height: 135,
+                                galleries[index],
+                                fit: BoxFit.cover,
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    galleries[index].deleteSync();
+
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(const SnackBar(
+                                      content: Text(
+                                        'Success remove image from gallery...',
+                                      ),
+                                      backgroundColor: Colors.green,
+                                    ));
+                                  },
+                                  child: const Text('Remove Image'))
+                            ],
                           ),
                         );
                       }),
