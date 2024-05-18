@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const Home(),
-        '/galleries': (context) => const GalleryIndex(),
+        '/galleries': (context) => GalleryIndex(),
         '/gallery/create': (context) => const GalleryCreate()
       },
     );
